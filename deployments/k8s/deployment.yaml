@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otusk8s2-deployment
+  labels:
+    app: otusk8s2-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: otusk8s2-app
+  template:
+    metadata:
+      labels:
+        app: otusk8s2-app
+    spec:
+      containers:
+        - name: otusk8s2
+          image: adalekin/otusk8s2:latest
+          env:
+            - name: PORT
+              value: "8001"
+          ports:
+            - name: web
+              containerPort: 8001
+          livenessProbe:
+            httpGet:
+              path: /health/
+              port: 8001
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "1"
