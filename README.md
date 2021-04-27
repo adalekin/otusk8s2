@@ -16,7 +16,7 @@ make build-docker
 
 It makes an ELF-binary and prepares a Docker image `adalekin/otusk8s2:latest` based on Scratch.
 
-For more information see the [Dockerfile](`build/docker/Dockerfile`).
+For more information see the [Dockerfile](build/docker/Dockerfile).
 
 ## How to run with Kubernetes
 
